@@ -1917,7 +1917,10 @@ Rosstackage::getCachePath()
   fs::path cache_path;
 
   char* ros_home = getenv("ROS_HOME");
-  if(ros_home)
+  char* ros_cache_path = getenv("ROS_CACHE_PATH");
+  if(ros_cache_path)
+    cache_path = ros_cache_path;
+  else if(ros_home)
     cache_path = ros_home;
   else
   {
