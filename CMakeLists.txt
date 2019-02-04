@@ -13,7 +13,9 @@ catkin_package(
   DEPENDS Boost TinyXML2
 )
 
-#add_definitions(-Wall)
+if(NOT WIN32)
+  add_definitions(-Wall)
+endif()
 
 set(API_BACKCOMPAT_V1 "YES" CACHE BOOL "Whether to enable backwards compatibility with old C++ API")
 if(API_BACKCOMPAT_V1)
