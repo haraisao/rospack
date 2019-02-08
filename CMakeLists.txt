@@ -53,6 +53,12 @@ install(TARGETS rospack rospackexe rosstackexe
 install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
   FILES_MATCHING PATTERN "*.h")
+if(WIN32)
+  install(FILES "${TinyXML2_ROOT_DIR}/bin/tinyxml2.dll"
+    DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION})
+  install(FILES "${PYTHON_INCLUDE_DIRS}/../python37.dll"
+    DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION})
+endif()
 
 # uninstall target
 configure_file(
