@@ -34,6 +34,8 @@
 #include <stdio.h>
 #include <errno.h>
 
+#include <iostream>
+
 namespace rospack
 {
 
@@ -57,7 +59,7 @@ ROSPack::run(const std::string& cmd)
 {
   // Callers of this method don't make 'rospack' argv[0].
   std::string full_cmd = std::string("rospack ") + cmd;
-
+  //std::cerr << "====[ROSPack::run]--(" << cmd << ")" << std::endl;
   int argc;
   char** argv;
   std::vector<std::string> full_cmd_split;
@@ -74,6 +76,7 @@ ROSPack::run(const std::string& cmd)
     argv[i] = new char[it->size()+1];
     memset(argv[i], 0, it->size()+1);
     memcpy(argv[i], it->c_str(), it->size());
+    //std::cerr << "====[" << i << "]--(" << argv[i] << ")" << std::endl;
     i++;
   }
 
@@ -82,7 +85,7 @@ ROSPack::run(const std::string& cmd)
   for(int i=0; i<argc; i++)
     delete[] argv[i];
   delete[] argv;
-
+  //std::cerr << "====[return value:" << ret << "]" << std::endl;
   return ret;
 }
 
